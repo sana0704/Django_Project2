@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+
+
+{% block content %}
+
+
+<div class="container-fluid text-center"  > 
+    <div id="titlebgcolor" style="height: 300px;" >
+    <div class="row p-4" >
+<h2 class="title">Craft Your Story, Rule Your Space</h2>
+</div>
+<a href="{% url 'create_blog' %}" class="btn btn-warning">Create Blog</a>
+</div>
+</div>
+
+<section>
+    {% for post in posts %}
+    <article>
+        <h5>{{post.title}}</h5>
+        <p>
+            By:{{post.author.username.capitalize}}
+        </p>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,34 @@
+
+body{
+    background-color: #E6521F;
+    header{
+    #nav1{
+        background-color: #FB9E3A;  
+    }
+
+    .nav-link{
+       color:#16610E; 
+       font-size: larger;
+       font-weight: bolder;
+       font-family: cursive;
+       
+       }
+       .nav-link:hover{
+        color: #5A827E;
+    }
+}
+}
+
+
+/* hero section */
+.title{
+    color: #FCF259;
+    font-family: cursive;
+    font-weight: 900;
+    
+}
+
+
+#titlebgcolor{
+    background-color: #C5172E;
+}

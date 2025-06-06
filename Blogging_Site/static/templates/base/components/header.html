@@ -1,0 +1,38 @@
+
+
+<nav class="navbar navbar-expand-lg" id="nav1">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'homepage'%}">Your Blogging Site</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a href="" class="nav-link text-light">
+            {{user.username.capitalize}}
+          </a>
+        </li>
+        <li class="nav-item navcolor">
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="nav-link">Logout</button>
+          </form>
+        </li>
+
+        {% else %}
+        <li class="nav-item navcolor">
+          <a class="nav-link" href="{% url 'signin' %}">Sign In<a>
+        </li>
+        <li class="nav-item navcolor">
+          <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
