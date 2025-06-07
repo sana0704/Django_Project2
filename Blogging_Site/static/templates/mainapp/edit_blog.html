@@ -1,0 +1,35 @@
+
+{% extends 'base/base.html' %}
+
+{% block title %}
+Edit Blog
+{% endblock %}
+
+{% block content %}
+
+ 
+<div class="container-fluid d-flex justify-content-center">
+
+    <form method="post" class="form w-20 border py-3 px-3" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+
+        <div>
+            <label for="{{field.name}}">{{field.name}}</label>
+            <div>
+                {{field}}
+            </div>
+            <div>
+                {{field.errors}}
+            </div>
+
+            
+        </div>
+        
+
+        {% endfor %}
+        {{form.non_field_errors}}
+        <button type="submit">Save</button>
+
+</div>
+{% endblock %}

@@ -10,6 +10,7 @@
 <h2 class="title">Craft Your Story, Rule Your Space</h2>
 </div>
 <a href="{% url 'create_blog' %}" class="btn btn-warning">Create Blog</a>
+
 </div>
 </div>
 
@@ -20,6 +21,14 @@
         <p>
             By:{{post.author.username.capitalize}}
         </p>
+
+        {% if user.id == post.author.id %}
+        <a href="{% url 'edit_blog' post.id %}" class="btn btn-warning">Edit Blog</a>
+        <a href="{% url 'delete_blog' post.id %}" class="btn btn-warning">Delete Blog</a>
+   {% endif %}
+ 
+
+
     </article>
     {% endfor %}
 </section>
