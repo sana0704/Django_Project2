@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView ,UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView ,UpdateView, DeleteView
 from .models import Post
 from .forms import PostForm
 
@@ -8,11 +8,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-class HomeView(ListView):
-    template_name = 'mainapp/home.html'
-    model = Post 
-    context_object_name = 'posts'
-
+# Create
 
 
 class AddPost(LoginRequiredMixin, CreateView):
@@ -26,13 +22,25 @@ class AddPost(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+# Read
+class HomeView(ListView):
+    template_name = 'mainapp/home.html'
+    model = Post 
+    context_object_name = 'posts'
 
+class PostDetails(DetailView):
+    template_name = 'mainapp/post.html'
+    model = Post 
+    context_object_name = 'post'
+
+# Update
 class EditPost(LoginRequiredMixin,UpdateView):
     model=Post
     template_name = 'mainapp/edit_blog.html'
     form_class = PostForm
     success_url = '/'
 
+# Delete
 class DeletePost(LoginRequiredMixin,DeleteView):
     model = Post
     template_name = 'mainapp/delete_blog.html'

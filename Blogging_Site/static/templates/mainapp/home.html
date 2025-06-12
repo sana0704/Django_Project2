@@ -14,10 +14,14 @@
 </div>
 </div>
 
-<section>
+<section class="container-fluid">
     {% for post in posts %}
-    <article>
-        <h5>{{post.title}}</h5>
+    <article class="">
+        <h5>
+            <a href="{% url 'detail_blog' post.id %}">
+                {{post.title}}
+            </a>
+        </h5>
         <p>
             By:{{post.author.username.capitalize}}
         </p>
