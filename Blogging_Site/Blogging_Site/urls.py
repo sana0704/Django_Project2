@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mainapp.urls')),
@@ -24,6 +27,13 @@ urlpatterns = [
     
     # authentication
     path('accounts/',include('authentication.urls')),
-    path('accounts/',include('django.contrib.auth.urls'))
+    path('accounts/',include('django.contrib.auth.urls')),
+
+    # activity
+
+    path('activity/',include('activity.urls'))
 ]
 
+
+if settings.DEBUG == True:
+    urlpatterns +=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

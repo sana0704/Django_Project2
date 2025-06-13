@@ -1,1 +1,82 @@
-{% extends  }
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <!-- goback btn -->
+<div class="row my-4 main-content">
+    <div class="col">
+<a href="{% url 'homepage' %}" class="btn btn-danger">Go Back</a>
+</div>
+</div>
+
+<!-- post details -->
+    <div class="row mt-4 border">
+        <div class="col-sm-4">
+            <img src="{{post.image.url}}" class="w-100 card-img py-3 px-3 " alt="">
+        </div>
+
+        <div class="col-sm-8 border ">
+            <h3 class="text-center">
+                {{post.title}}  By: {{post.author}} 
+            </h3>
+            
+            <h4 class="border">
+               {{ post.subtitle}}
+            </h4>
+
+            <div class="border px-3 py-3 text-start">
+                {{post.content}}
+            </div>
+
+            <!-- delete edit button -->
+            {% if user.id == post.author.id %}
+            <div class="row  mx-1">
+                <div class="col-sm-2 text-center ">
+                    <a href="{% url 'edit_blog' post.id %}" class="btn btn-warning my-3">Edit <i class="bi bi-pen"></i></a>
+                </div>
+
+                <div class="col-sm-2 text-center">
+                    <a href="{% url 'delete_blog' post.id %}" class="w-80 btn btn-danger my-3">Delete <i class="bi bi-trash-fill"></i></a>
+                </div>
+
+            </div>
+               {% endif %}
+
+        </div>
+    </div>
+
+    <div>
+        <form method="post" action="{% url 'add_comment' post.id %}">
+            {% csrf_token %}
+            {{comment_form.as_p}}
+
+            <button type="submit">Add Comment</button>
+        </form>
+    </div>
+    <!-- comment section -->
+     <section id = "comments">
+        <div class="col">
+        {% for comment in post_comments %}
+
+        <div class="row">
+            {{comment.body}} : 
+                {% if post.author == user %}
+                    Author
+                {% else %}
+                    {{comment.author.username.capitalize}}
+                {% endif %}
+        </div>
+
+        {% endfor %}
+     </div>
+
+     </section>
+     
+
+</div>
+
+
+{% endblock %}
+

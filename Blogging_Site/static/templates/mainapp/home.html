@@ -1,39 +1,24 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base.html' %} 
 
 
 {% block content %}
 
-
-<div class="container-fluid text-center"  > 
-    <div id="titlebgcolor" style="height: 300px;" >
-    <div class="row p-4" >
-<h2 class="title">Craft Your Story, Rule Your Space</h2>
-</div>
-<a href="{% url 'create_blog' %}" class="btn btn-warning">Create Blog</a>
-
-</div>
+<div class="container">
+<div class="row-sm border my-4">
+  <a href="{% url 'create_blog' %}" class="btn btn-warning">Create Your Blog</a>
 </div>
 
-<section class="container-fluid">
-    {% for post in posts %}
-    <article class="">
-        <h5>
-            <a href="{% url 'detail_blog' post.id %}">
-                {{post.title}}
-            </a>
-        </h5>
-        <p>
-            By:{{post.author.username.capitalize}}
-        </p>
-
-        {% if user.id == post.author.id %}
-        <a href="{% url 'edit_blog' post.id %}" class="btn btn-warning">Edit Blog</a>
-        <a href="{% url 'delete_blog' post.id %}" class="btn btn-warning">Delete Blog</a>
-   {% endif %}
- 
+  <section class="row posts-list my-5">
+    <div class="col">
+      {% for post in posts %} 
+        {% include 'mainapp/components/postCard.html' %}
+      {% endfor %}
+    </div>
+  </section>
+</div>
 
 
-    </article>
-    {% endfor %}
-</section>
+   
+
+
 {% endblock %}

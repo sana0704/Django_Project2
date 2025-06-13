@@ -1,8 +1,9 @@
 
-
-<nav class="navbar navbar-expand-lg" id="nav1">
+<header>
+<nav class="navbar navbar-expand-lg" id="nav1"  style="background-color: #2C3E50;
+  color: #FAFAFA;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'homepage'%}">Your Blogging Site</a>
+    <a class="navbar-brand"  style="color: #FAFAFA;" href="{% url 'homepage'%}">Your Blogging Site</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,23 +13,23 @@
 
         {% if user.is_authenticated %}
         <li class="nav-item">
-          <a href="" class="nav-link text-light">
+          <a href="" class="nav-link" style="color: #FAFAFA;">
             {{user.username.capitalize}}
           </a>
         </li>
-        <li class="nav-item navcolor">
+        <li class="nav-item text-primary">
           <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
-            <button type="submit" class="nav-link">Logout</button>
+            <button type="submit" style="color: #FAFAFA;" class="nav-link">Logout</button>
           </form>
         </li>
 
         {% else %}
-        <li class="nav-item navcolor">
-          <a class="nav-link" href="{% url 'signin' %}">Sign In<a>
+        <li class="nav-item ">
+          <a class="nav-link" style="color: #FAFAFA;" href="{% url 'signin' %}">Sign In<a>
         </li>
-        <li class="nav-item navcolor">
-          <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+        <li class="nav-item">
+          <a class="nav-link" style="color: #FAFAFA;" href="{% url 'signup' %}">Sign Up</a>
         </li>
         {% endif %}
       </ul>
@@ -36,3 +37,4 @@
   </div>
 </nav>
 
+</header>

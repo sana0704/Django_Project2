@@ -1,13 +1,16 @@
 {% extends 'base/base.html' %}
-<!--title -->
+{% load static %}
+
+
 {% block title %}
 Sign In
 {% endblock %}
 
 <!-- main content -->
 {% block content %}
-<div class="container-fluid">
 
+<section id="signIn"> 
+<div  id="signinBody">
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
@@ -15,6 +18,6 @@ Sign In
     </form>
 
 </div>
-
+</section>
 {% endblock %}
 

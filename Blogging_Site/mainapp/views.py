@@ -2,9 +2,11 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView ,UpdateView, DeleteView
 from .models import Post
 from .forms import PostForm
-
+from activity.forms import CommentForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+
+from activity.models import Comment
 # Create your views here.
 
 
@@ -33,6 +35,12 @@ class PostDetails(DetailView):
     model = Post 
     context_object_name = 'post'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comment_form'] = CommentForm()
+        context['post_comments'] = Comment.objects.filter(post = context['post'])
+        return context
+
 # Update
 class EditPost(LoginRequiredMixin,UpdateView):
     model=Post
@@ -45,11 +53,3 @@ class DeletePost(LoginRequiredMixin,DeleteView):
     model = Post
     template_name = 'mainapp/delete_blog.html'
     success_url = '/'
-# def addPost(request):
-#     if request.method == 'GET':
-#         form = PostForm()
-#         context = {
-#             'form' : form
-#         }
-#         return render(request, 'mainapp/create_blog.html', context)
-#     elif request.method == 'POST':

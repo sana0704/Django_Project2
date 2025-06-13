@@ -1,0 +1,17 @@
+<div class="card my-2">
+  <div class="row">
+    <div class="col h-100">
+      <img src="{{post.image.url}}" class="w-100" alt="" />
+    </div>
+    <div class="col">
+    <h4>
+        <a href="{% url 'detail_blog' post.id %}">
+            {{post.title}}
+        </a>
+    </h4>
+      <h6>By : {{post.author.username.capitalize}}</h6>
+
+      <p class=" text-3-lines">{{post.content}}</p>
+    </div>
+  </div>
+</div>
