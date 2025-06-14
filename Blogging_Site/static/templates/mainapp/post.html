@@ -4,6 +4,31 @@
 {% block content %}
 
 <div class="container">
+
+<!-- icons -->
+    
+<div class="row gx-2 gy-2 align-items-center border p-2">
+    <div class="col-sm-auto">
+        <a href="#"><i class="bi bi-facebook fs-4 text-primary"></i></a>
+    </div>
+
+    <div class="col-sm-auto">
+        <a href="#"><i class="bi bi-twitter fs-4 text-info"></i></a>
+    </div>
+
+    <div class="col-sm-auto">
+        <a href="#"><i class="bi bi-instagram fs-4 text-danger"></i></a>
+    </div>
+
+    <div class="col-sm">
+        <a href="#" class="btn btn-warning btn-sm float-end">
+            Support <i class="bi bi-envelope-at"></i>
+        </a>
+    </div>
+</div>
+
+
+
     <!-- goback btn -->
 <div class="row my-4 main-content">
     <div class="col">
@@ -30,7 +55,7 @@
                 {{post.content}}
             </div>
 
-            <!-- delete edit button -->
+            <!-- delete/edit button -->
             {% if user.id == post.author.id %}
             <div class="row  mx-1">
                 <div class="col-sm-2 text-center ">
@@ -43,24 +68,26 @@
 
             </div>
                {% endif %}
-
         </div>
     </div>
 
-    <div>
-        <form method="post" action="{% url 'add_comment' post.id %}">
+ <!-- comment section -->
+    <div class="mt-4">
+        <form method="post" action="{% url 'add_comment' post.id %}"  >
             {% csrf_token %}
             {{comment_form.as_p}}
 
-            <button type="submit">Add Comment</button>
+            <button type="submit" class="btn btn-primary mx-4">Add Comment</button>
         </form>
     </div>
-    <!-- comment section -->
+   
      <section id = "comments">
+        
         <div class="col">
         {% for comment in post_comments %}
 
-        <div class="row">
+        <div class="row my-2">
+            
             {{comment.body}} : 
                 {% if post.author == user %}
                     Author

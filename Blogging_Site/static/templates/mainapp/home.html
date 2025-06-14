@@ -4,10 +4,76 @@
 {% block content %}
 
 <div class="container">
-<div class="row-sm border my-4">
+
+<!-- createblog btn -->
+  <!-- <div class="container border d-flex my-4 justify-content-center">
+  <div class="row border ">
+    <h5>"Where thoughts become stories and stories spark conversations."</h5>
+  </div>
+<div class="row border my-4">
   <a href="{% url 'create_blog' %}" class="btn btn-warning">Create Your Blog</a>
 </div>
+</div> -->
 
+
+<div class="container my-5 p-4 rounded shadow bg-light text-center">
+  <div class="mb-4">
+    <h5 class="fw-bold fst-italic text-primary">
+      "Where thoughts become stories and stories spark conversations."
+    </h5>
+  </div>
+  <div>
+    <a href="{% url 'create_blog' %}" class="btn btn-warning px-4 py-2 fw-semibold shadow-sm">
+      ✍️ Create Your Blog
+    </a>
+  </div>
+</div>
+
+
+<!-- sorting of blogs -->
+<!-- <div class="row">
+  <h5>Sort By : </h5>
+</div>
+
+<div class="row">
+<div class="col-sm-auto">
+  <input type="checkbox"> Recent</input>
+</div>
+<div class="col-sm-auto">
+  <input type="checkbox">  Oldest</input>
+</div>
+</div> -->
+
+
+<div class="container my-4 p-3 bg-white rounded shadow-sm">
+  <div class="row align-items-center mb-2">
+    <div class="col">
+      <h5 class="mb-0 text-secondary">Sort By:</h5>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-auto">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="sortRecent">
+        <label class="form-check-label" for="sortRecent">
+          Recent
+        </label>
+      </div>
+    </div>
+    <div class="col-auto">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="sortOldest">
+        <label class="form-check-label" for="sortOldest">
+          Oldest
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- display of blogs -->
   <section class="row posts-list my-5">
     <div class="col">
       {% for post in posts %} 

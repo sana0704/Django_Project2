@@ -1,4 +1,4 @@
-<div class="card my-2">
+<!-- <div class="card my-2">
   <div class="row">
     <div class="col h-100">
       <img src="{{post.image.url}}" class="w-100" alt="" />
@@ -14,4 +14,36 @@
       <p class=" text-3-lines">{{post.content}}</p>
     </div>
   </div>
+</div> -->
+
+<div class="card my-4 shadow-sm border-0 rounded-4 overflow-hidden" style="min-height: 280px;">
+  <div class="row g-0 h-100">
+    
+ 
+    <div class="col-md-4">
+      <img src="{{ post.image.url }}" class="img-fluid h-100 w-100" 
+           style="object-fit: cover;" alt="Blog Image">
+    </div>
+
+
+    <div class="col-md-8 d-flex flex-column justify-content-between p-4 bg-light">
+      <div>
+        <h4 class="mb-1">
+          <a href="{% url 'detail_blog' post.id %}" class="text-decoration-none text-dark">
+            {{ post.title }}
+          </a>
+        </h4>
+        <h6 class="text-muted fst-italic mb-2">{{ post.subtitle }}</h6>
+        <h6 class="text-muted mb-3">By: {{ post.author.username.capitalize }}</h6>
+        <p class="text-muted text-3-lines mb-2" style="font-size: 0.95rem;">{{ post.content }}</p>
+      </div>
+
+      <div>
+        <a href="{% url 'detail_blog' post.id %}" class="btn btn-sm btn-outline-primary">
+          Read More →
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
+
