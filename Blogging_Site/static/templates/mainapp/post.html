@@ -7,21 +7,9 @@
 
 <!-- icons -->
     
-<div class="row gx-2 gy-2 align-items-center border p-2">
-    <div class="col-sm-auto">
-        <a href="#"><i class="bi bi-facebook fs-4 text-primary"></i></a>
-    </div>
-
-    <div class="col-sm-auto">
-        <a href="#"><i class="bi bi-twitter fs-4 text-info"></i></a>
-    </div>
-
-    <div class="col-sm-auto">
-        <a href="#"><i class="bi bi-instagram fs-4 text-danger"></i></a>
-    </div>
-
+<div class="row gx-2 gy-2 align-items-center p-2">
     <div class="col-sm">
-        <a href="#" class="btn btn-warning btn-sm float-end">
+        <a href=# class="btn btn-secondary btn-sm float-end">
             Support <i class="bi bi-envelope-at"></i>
         </a>
     </div>
@@ -30,28 +18,29 @@
 
 
     <!-- goback btn -->
-<div class="row my-4 main-content">
+<div class="row my-4 ">
     <div class="col">
 <a href="{% url 'homepage' %}" class="btn btn-danger">Go Back</a>
 </div>
 </div>
 
 <!-- post details -->
-    <div class="row mt-4 border">
+
+    <div class="row mt-4 post-content" >
         <div class="col-sm-4">
             <img src="{{post.image.url}}" class="w-100 card-img py-3 px-3 " alt="">
         </div>
 
-        <div class="col-sm-8 border ">
+        <div class="col-sm-8">  
             <h3 class="text-center">
                 {{post.title}}  By: {{post.author}} 
             </h3>
             
-            <h4 class="border">
+            <h4 class="">
                {{ post.subtitle}}
             </h4>
 
-            <div class="border px-3 py-3 text-start">
+            <div class=" px-3 py-3 my-4 border text-start contentBody">
                 {{post.content}}
             </div>
 
@@ -91,6 +80,7 @@
             {{comment.body}} : 
                 {% if post.author == user %}
                     Author
+                    <a href="">delete</a>
                 {% else %}
                     {{comment.author.username.capitalize}}
                 {% endif %}

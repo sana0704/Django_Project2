@@ -8,14 +8,14 @@ Edit Blog
 {% block content %}
 
  
-<div class="container-fluid d-flex justify-content-center">
+<div class="container-fluid d-flex justify-content-center edit-post">
 
-    <form method="post" class="form w-20 border py-3 px-3" enctype="multipart/form-data">
+    <form method="post" class="form w-100 border py-2 px-2 my-4" enctype="multipart/form-data">
         {% csrf_token %}
         {% for field in form %}
 
         <div>
-            <label for="{{field.name}}">{{field.name}}</label>
+            <label for="{{field.name}}" >{{field.name.capitalize}}: </label>
             <div>
                 {{field}}
             </div>
@@ -29,7 +29,8 @@ Edit Blog
 
         {% endfor %}
         {{form.non_field_errors}}
-        <button type="submit">Save</button>
+        <button type="submit" class="btn btn-success my-3">Save</button>
+        <a href="{% url 'homepage' %}" class="btn btn-danger">Go Back</a>
 
 </div>
 {% endblock %}

@@ -1,31 +1,21 @@
-{% extends 'base/base.html' %}
-{% block title %}
-Sign In
-{% endblock %}
-
+{% extends 'base/base.html' %} {% block title %} Sign Up {% endblock %} 
 {% block content %}
 <div class="container-fluid d-flex justify-content-center">
+  <form method="post" class="form w-20 border py-3 px-3">
+    {% csrf_token %} 
+    {% for field in form %}
 
-    <form method="post" class="form w-20 border py-3 px-3">
-        {% csrf_token %}
-        {% for field in form %}
+    <div>
+      <label for="{{field.name}}">{{field.name.capitalize}}</label>
+      <div>{{field}}</div>
+      <div>{{field.errors}}</div>
+    </div>
 
-        <div>
-            <label for="{{field.name}}">{{field.name}}</label>
-            <div>
-                {{field}}
-            </div>
-            <div>
-                {{field.errors}}
-            </div>
-        </div>
-        
-
-        {% endfor %}
-        {{form.non_field_errors}}
-        <button type="submit">Sign Up</button>
-    </form>
-
+    {% endfor %} {{form.non_field_errors}}
+    <button type="submit" class="btn btn-primary my-4">Sign Up</button>
+  </form>
 </div>
 
 {% endblock %}
+
+

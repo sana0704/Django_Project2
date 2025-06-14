@@ -1,95 +1,132 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #f6f0f0;
 
-body{
-padding: 0;
-margin: 0;
-box-sizing: border-box;
-
-
-
-
-
-div.container {
-    
+  div.container {
     .posts-list {
+      .col {
+        max-width: 700px;
+        margin: auto;
+        .card {
+          height: 200px;
 
-        .col {
-            max-width: 700px;
-            margin: auto;
-            .card {
-                height: 200px;
-                
-                .row {
-                    height: 100%;
-                    .col {
-                        overflow: hidden;
-                        img{
-                            height: 100%;
-                            object-fit: cover;
-                        }
-                    }
-                }
+          .row {
+            height: 100%;
+            .col {
+              overflow: hidden;
+              img {
+                height: 100%;
+                object-fit: cover;
+              }
             }
+          }
         }
+      }
     }
 
-}
+    .post-content {
+      box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+      border-radius: 10px;
 
-   /* SIGNIN PAGE */
-#signIn {
-    background-image: url('../images/whitebg.jpg');  
-    background-size: cover;                
+      img {
+        margin-top: 25px;
+        height: 300px;
+        cursor: pointer;
+      }
+
+      h3 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: larger;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        margin-top: 10px;
+      }
+
+      h4 {
+        font-family: cursive;
+        font-size: large;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+      }
+
+      .contentBody {
+        background-color: #f1f0e8;
+        color: navy;
+        border-radius: 10px;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande";
+        letter-spacing: 1.5px;
+        box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+      }
+    }
+  }
+
+  .create-post{
+    background-image: url('../images/note-pad.jpg');
+    background-size: cover;
+    background-position:top;
+    font-family: cursive;
+    font-size: larger;
+    font-weight: 400;
+
+    /* background-position-y: center; */
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* SIGNIN PAGE */
+  #signIn {
+    background-image: url("../images/whitebg.jpg");
+    background-size: cover;
     background-position: center;
     /* margin-top: 20px; */
-    min-height: 500px;                      
+    min-height: 500px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-repeat: no-repeat;
-}
+  }
 
-/* Signin Form Box */
-#signinBody {
-    background-color: rgba(255, 255, 255, 0.9);  
+  /* Signin Form Box */
+  #signinBody {
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 30px;
     width: 400px;
     border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);  
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-size: 17px;
     font-weight: 500;
     transition: transform 0.3s ease;
-}
+  }
 
-#signinBody:hover {
-    transform: scale(1.01);                     
-}
+  #signinBody:hover {
+    transform: scale(1.01);
+  }
 
+  /* desc styling */
 
-
-  
-
-
-
-
-
-
-
-
-
-    /* desc styling */
-
-.text-3-lines {
+  .text-3-lines {
     display: -webkit-box;
     max-width: 200px;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
 }
-}
-
-

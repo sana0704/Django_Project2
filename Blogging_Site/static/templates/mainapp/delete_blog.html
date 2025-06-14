@@ -1,14 +1,43 @@
+{% extends 'base/base.html' %} {% block title %} Delete Blog {% endblock %} 
 
-{% extends 'base/base.html' %}
+{%block content %}
 
-{% block title %}
-Delete Blog
-{% endblock %}
+<div class="container">
+  <div class="row">
+    <div class="col my-5">
+      <img src="{{post.image.url}}" alt="" class="w-100 img-fluid" round-edge />
+    </div>
 
-{% block content %}
+    <div class="col my-5">
+      <h4>{{ post.title}}</h4>
+      <p>{{ post.subtitle }}</p>
 
+      {% if post.content %}
+      <div class="text-secondary">{{ post.content }}</div>
+      {% endif %}
+      <div>
+        <h5 class="my-5">
+          Are You sure want to delete Your Post?<br /><span class="text-warning"
+            >{{ post.title }}</span>
+        </h5>
 
-<script>
-    alert("Are You Sure want to delete ?")
-</script>
+        <div class="row w-100  justify-content-center align-items-center gap-2 py-3">
+          <form method="post" class="col-auto p-0 m-0">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger w-100">
+              Delete Post
+            </button>
+          </form>
+
+          <a href="{% url 'detail_blog' post.id %}"
+            class="btn btn-warning col-auto"
+            >Cancel</a>
+
+          <a href="{% url 'homepage' %}" class="btn btn-success col-auto">Go Back</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
