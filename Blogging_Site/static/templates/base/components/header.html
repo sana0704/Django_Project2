@@ -67,7 +67,7 @@
 
           {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">
+              <a class="nav-link text-white" href="{% url 'profile' %}">
                 Hello, {{ user.username.capitalize }}
               </a>
             </li>

@@ -13,3 +13,7 @@ class Post(models.Model):
 
     def __str__(self):
         return f"{self.title.capitalize()} by {self.author.username.capitalize()}."
+    
+    @property
+    def get_total_likes(self):
+        return self.post_likes.count()

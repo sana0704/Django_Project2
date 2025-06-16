@@ -6,13 +6,11 @@ from activity.forms import CommentForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
-from activity.models import Comment
+from activity.models import Comment, Like
 # Create your views here.
 
 
 # Create
-
-
 class AddPost(LoginRequiredMixin, CreateView):
     model = Post 
     template_name = 'mainapp/create_blog.html'
@@ -24,11 +22,19 @@ class AddPost(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+
 # Read
 class HomeView(ListView):
     template_name = 'mainapp/home.html'
     model = Post 
     context_object_name = 'posts'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['likes'] = Post.objects.prefetch_related('post_likes')
+        print(context['likes'].all()[0])
+        return context
+
 
 class PostDetails(DetailView):
     template_name = 'mainapp/post.html'
