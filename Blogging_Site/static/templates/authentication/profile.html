@@ -1,11 +1,32 @@
-
 {% extends 'base/base.html' %} 
 
 {% block title %} Profile {% endblock %} 
 {% block content %}
 
-Create Profile
+<h3>Profile</h3>
+
+<div>
+
+    <img src="{{ userProfile.profile_picture.url }}" alt="" height="200px" width="200px">
+
 <p>
-    {{ profile.first_name }}
+    {{ userProfile.first_name }}
 </p>
+
+<p>
+    {{ userProfile.last_name }}
+</p>
+
+<p>
+    {{ userProfile.email }}
+
+</p>
+
+<p>
+    {{ userProfile.city }}
+</p>
+</div>
+
+
+
 {% endblock %}

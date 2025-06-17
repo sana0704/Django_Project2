@@ -29,7 +29,9 @@ class UserRegisterView(CreateView):
 def profileView(request):
     if UserProfile.objects.filter(user = request.user).exists():
         template = 'authentication/profile.html'
-        context = {}
+        context = {
+            'userProfile':UserProfile.objects.get(user = request.user)
+        }
         return render(request, template, context)
     else:
         return redirect(reverse_lazy('create_profile'))
@@ -37,7 +39,7 @@ def profileView(request):
 
 class CreateProfile(CreateView):
     model = UserProfile
-    fields = ['first_name', 'last_name']
+    fields = ['profile_picture','first_name', 'last_name','email','city']
     template_name = 'authentication/profile_add.html'
     success_url = '/'
 
