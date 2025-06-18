@@ -46,6 +46,10 @@ class PostDetails(DetailView):
         context['comment_form'] = CommentForm()
         context['post_comments'] = Comment.objects.filter(post = context['post'])
         return context
+    
+
+
+
 
 # Update
 class EditPost(LoginRequiredMixin,UpdateView):

@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .models import Comment, Like
+from .models import Comment, Like 
 from mainapp.models import Post
+from authentication.models import UserProfile
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import ListView,CreateView,DeleteView,UpdateView
@@ -20,6 +21,12 @@ def addComment(request, post_id):
         return redirect(reverse('detail_blog' , kwargs={'pk': this_post.pk}) + "#comments")
 
 
+class DeleteComment(DeleteView):
+    model = Comment
+    template_name = 'authentication/delete_comment.html'
+    success_url = '/'
+    
+    
 
 
 

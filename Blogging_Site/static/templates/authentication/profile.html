@@ -1,32 +1,20 @@
 {% extends 'base/base.html' %} 
 
 {% block title %} Profile {% endblock %} 
+
 {% block content %}
+<div class="container py-5 d-flex justify-content-center">
+  <div class="card shadow-lg p-4 rounded-4" style="width: 22rem;">
+    <div class="d-flex justify-content-center mb-3">
+      <img src="{{ userProfile.profile_picture.url }}" alt="" class="rounded-circle border" height="150px" width="150px">
+    </div>
 
-<h3>Profile</h3>
-
-<div>
-
-    <img src="{{ userProfile.profile_picture.url }}" alt="" height="200px" width="200px">
-
-<p>
-    {{ userProfile.first_name }}
-</p>
-
-<p>
-    {{ userProfile.last_name }}
-</p>
-
-<p>
-    {{ userProfile.email }}
-
-</p>
-
-<p>
-    {{ userProfile.city }}
-</p>
+    <div class="card-body text-center">
+      <h4 class="card-title mb-2">{{ userProfile.first_name }} {{ userProfile.last_name }}</h4>
+      <p class="text-muted mb-1"><strong>Email:</strong> {{ userProfile.email }}</p>
+      <p class="text-muted"><strong>City:</strong> {{ userProfile.city }}</p>
+    </div>
+  </div>
 </div>
-
-
 
 {% endblock %}

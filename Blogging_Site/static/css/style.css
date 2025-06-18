@@ -5,7 +5,8 @@ body {
 background-image: url('../images/rose.jpg');
 background-size: cover;
 background-attachment: fixed;
-
+  background-color: #f8f9fa;
+  min-height: 100vh;
 
   div.container {
     
@@ -75,7 +76,7 @@ background-attachment: fixed;
       }
     }
   }
-
+/* 
   .create-post{
     background-image: url('../images/note-pad.jpg');
     background-attachment: fixed;
@@ -86,7 +87,7 @@ background-attachment: fixed;
     font-weight: 400;
 
 
-  }
+  } */
 
 
 
@@ -144,4 +145,12 @@ background-attachment: fixed;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+
+
+
+
+
+
+
 }

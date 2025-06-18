@@ -1,51 +1,4 @@
 
-<!-- <header>
-<nav class="navbar navbar-expand-lg" id="nav1"  style="background-color: #2C3E50;
-  color: #FAFAFA;">
-  <div class="container-fluid">
-    <a class="navbar-brand"  style="color: #FAFAFA;" href="{% url 'homepage'%}">Your Blogging Site</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-
-        {% if user.is_authenticated %}
-        <li class="nav-item">
-          <a href="" class="nav-link" style="color: #FAFAFA;">
-            {{user.username.capitalize}}
-          </a>
-        </li>
-        <li class="nav-item text-primary">
-          <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit" style="color: #FAFAFA;" class="nav-link">Logout</button>
-          </form>
-        </li>
-
-<form class="d-flex mx-3" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-
-        {% else %}
-        <li class="nav-item ">
-          <a class="nav-link" style="color: #FAFAFA;" href="{% url 'signin' %}">Sign In<a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: #FAFAFA;" href="{% url 'signup' %}">Sign Up</a>
-        </li>
-        {% endif %}
-      </ul>
-
-      
-    </div>
-  </div>
-</nav>
-
-</header> -->
-
 <header>
   <nav class="navbar navbar-expand-lg" style="background-color: #2C3E50; color: #FAFAFA;">
     <div class="container-fluid">
@@ -68,7 +21,11 @@
           {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link text-white" href="{% url 'profile' %}">
-                Hello, {{ user.username.capitalize }}
+                Hello, {{ user.username.capitalize }} 
+                
+                {% if user.user_profile.profile_picture %}
+                <img src= "{{ user.user_profile.profile_picture.url }}" alt="" height="20px" width="20px">
+                {% endif %}
               </a>
             </li>
             <li class="nav-item">

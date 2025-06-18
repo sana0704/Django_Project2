@@ -4,16 +4,6 @@
 {% block content %}
 
 <div class="container">
-
-<!-- icons -->
-<!-- <div class="row gx-2 gy-2 align-items-center p-2">
-    <div class="col-sm">
-        <a href=# class="btn btn-secondary btn-sm float-end">
-            Support <i class="bi bi-envelope-at"></i>
-        </a>
-    </div>
-</div> -->
-
     <!-- goback btn -->
 <div class="row my-4 ">
     <div class="col">
@@ -58,36 +48,40 @@
     </div>
 
  <!-- comment section -->
-    <div class="mt-4">
-        <form method="post" action="{% url 'add_comment' post.id %}"  >
-            {% csrf_token %}
-            {{comment_form.as_p}}
-
-            <button type="submit" class="btn btn-primary mx-4">Add Comment</button>
-        </form>
-    </div>
-   
-     <section id = "comments">
-        
-        <div class="col">
-        {% for comment in post_comments %}
-
-        <div class="row my-2">
-            
-            {{comment.body}} : 
-                {% if post.author == user %}
-                    Author
-                    <a href="">delete</a>
-                {% else %}
-                    {{comment.author.username.capitalize}}
-                {% endif %}
-        </div>
-
-        {% endfor %}
-     </div>
-
-     </section>
      
+
+
+<div class="mt-4">
+    <form method="post" action="{% url 'add_comment' post.id %}">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit" class="btn btn-primary mx-4">Add Comment</button>
+    </form>
+</div>
+
+<section id="comments" class="mt-5">
+    <div class="col">
+        {% for comment in post_comments %}
+        <div class="row my-2">
+            <div class="d-flex align-items-center gap-2">
+                
+                {% if post.author == user %}
+                    <strong>By Author</strong>
+                {% else %}
+                    <img src="{{ comment.author.user_profile.profile_picture.url }}" alt="Profile" height="25px" width="25px" class="rounded-circle border">
+                    <strong>{{ comment.author.username|capfirst }}</strong>
+                {% endif %}
+                
+                <span class="ms-2">{{ comment.body }}</span>
+
+                {% if comment.author == user %}
+                    <a href="{% url 'delete_comment' comment.id %}" class="btn btn-sm btn-link text-danger ms-auto text-decoration-none">Delete</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
 
 </div>
 

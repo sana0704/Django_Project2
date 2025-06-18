@@ -9,4 +9,5 @@ urlpatterns=[
 
     path('profile/', views.profileView, name= 'profile'),
     path('profile/create', views.CreateProfile.as_view(), name = 'create_profile')
+   
 ]
