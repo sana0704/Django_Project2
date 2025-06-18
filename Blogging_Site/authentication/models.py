@@ -12,6 +12,10 @@ class UserProfile(models.Model):
     email=models.CharField(max_length=300, null=True)
     city=models.CharField(max_length=200, null=True)
 
+    @property
+    def full_name(self):
+        return f"{self.first_name.capitalize()} {self.last_name.capitalize()}"
+
 
 
 

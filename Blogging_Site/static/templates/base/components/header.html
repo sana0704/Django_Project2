@@ -21,7 +21,11 @@
           {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link text-white" href="{% url 'profile' %}">
-                Hello, {{ user.username.capitalize }} 
+                {% if user.user_profile.first_name %}
+                {{ user.user_profile.full_name }}
+                {% else %}
+                {{ user.username.capitalize }} 
+                {% endif %}
                 
                 {% if user.user_profile.profile_picture %}
                 <img src= "{{ user.user_profile.profile_picture.url }}" alt="" height="20px" width="20px">
@@ -48,11 +52,14 @@
 
         
           {% if user.is_authenticated %}
+
+          {% if search_bar %}
         <!-- Search Form (Right-Aligned) -->
-        <form class="d-flex ms-auto" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search blogs..." aria-label="Search">
-          <button class="btn btn-outline-light" type="submit">Search</button>
-        </form>
+        <form class="d-flex" role="search" method="get" action="{% url 'search' %}">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_text" value="{{query}}">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+        {% endif %}
         {% endif %}
       </div>
     </div>
