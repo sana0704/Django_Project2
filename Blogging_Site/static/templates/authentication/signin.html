@@ -1,23 +1,32 @@
+
 {% extends 'base/base.html' %}
+
 {% load static %}
-
-
-{% block title %}
-Sign In
-{% endblock %}
-
-<!-- main content -->
 {% block content %}
 
-<section id="signIn"> 
-<div  id="signinBody">
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Sign In</button>
-    </form>
+<!-- Full page center wrapper -->
+<div class="d-flex flex-column  align-items-center" style="min-height: 100vh;">
+
+    <!-- Heading Section -->
+    <div class="text-center my-5">
+        <h4 class="fw-bold mb-0">📝 Ready to Inspire the World Again?</h4>
+        <p class="text-muted mb-2">🚀 Login and light up the feed.</p>
+    </div>
+
+    <!-- Form Section -->
+    <div class="card shadow p-4 rounded-4 w-100" style="max-width: 400px;">
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="d-grid mt-2">
+                <button type="submit" class="btn btn-primary">🔐 Sign In</button>
+            </div>
+        </form>
+    </div>
 
 </div>
-</section>
+
 {% endblock %}
+
+
 

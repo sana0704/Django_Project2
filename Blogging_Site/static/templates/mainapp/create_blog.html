@@ -5,13 +5,13 @@
 <div class="container-fluid d-flex justify-content-center create-post">
   <form
     method="post"
-    class="form w-60 border py-3 px-3 my-3"
+    class="form w-100 border py-3 px-3 my-3"
     enctype="multipart/form-data"
   >
     {% csrf_token %} 
     {% for field in form %}
     <div>
-      <label for="{{field.name}}">{{field.name.capitalize}}</label>
+      <label for="{{field.name}}" style="font-weight: bold; font-size: larger;">{{field.name.capitalize}}</label>
       <div>{{field}}</div>
       <div>{{field.errors}}</div>
     </div>

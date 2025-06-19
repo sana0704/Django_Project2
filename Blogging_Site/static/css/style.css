@@ -103,7 +103,7 @@ background-attachment: fixed;
 
   /* SIGNIN PAGE */
   #signIn {
-    background-image: url("../images/whitebg.jpg");
+    /* background-image: url("../images/whitebg.jpg"); */
     background-size: cover;
     background-position: center;
     /* margin-top: 20px; */

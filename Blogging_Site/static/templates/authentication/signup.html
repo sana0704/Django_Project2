@@ -1,24 +1,49 @@
-{% extends 'base/base.html' %} 
-{% block title %} Sign Up {% endblock %} 
+{% extends 'base/base.html' %}
+{% block title %} Sign Up {% endblock %}
 
 {% block content %}
-<div class="container-fluid d-flex justify-content-center">
-  <form method="post" class="form w-20 border py-3 px-3">
-    {% csrf_token %} 
-    {% for field in form %}
 
-    <div>
-      <label for="{{field.name}}">{{field.name.capitalize}}</label>
-      <div>{{field}}</div>
-      <div>{{field.errors}}</div>
-    </div>
+<!-- Heading Section -->
+<div class="text-center my-4">
+  <h4 class="fw-bold mb-1">🚀 Launch Your Blogging Journey</h4>
+  <p class="text-muted mb-4">It all starts with a single post.</p>
+</div>
 
-    {% endfor %} {{form.non_field_errors}}
-    <button type="submit" class="btn btn-primary my-4">Sign Up</button>
-  </form>
+<!-- Centered Form Card -->
+<div class="container d-flex justify-content-center">
+  <div class="card shadow p-4 rounded-4 w-100" style="max-width: 450px;">
+    <form method="post" novalidate>
+      {% csrf_token %}
+
+      {% for field in form %}
+      <div class="mb-3">
+        <label for="{{ field.id_for_label }}" class="form-label">
+          {{ field.label }}
+        </label>
+        {{ field }}
+        {% if field.errors %}
+        <div class="text-danger small">
+          {{ field.errors }}
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+
+      {% if form.non_field_errors %}
+      <div class="text-danger mb-2 small">
+        {{ form.non_field_errors }}
+      </div>
+      {% endif %}
+
+      <div class="d-grid mt-3">
+        <button type="submit" class="btn btn-primary">✍️ Sign Up</button>
+      </div>
+    </form>
+  </div>
 </div>
 
 {% endblock %}
+
 
 
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-
+from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from .models import UserProfile
@@ -35,11 +35,23 @@ def profileView(request):
         return render(request, template, context)
     else:
         return redirect(reverse_lazy('create_profile'))
-    
+
+
+
 
 class CreateProfile(CreateView):
     model = UserProfile
     fields = ['profile_picture','first_name', 'last_name','email','city']
+    widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
+            'city': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'City'}),
+            'profile_picture': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+        }
+
+
+
     template_name = 'authentication/profile_add.html'
     success_url = '/'
 
