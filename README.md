@@ -1,4 +1,4 @@
-# 📝 Blogging Website (Django) – In Progress
+# 📝 Blogging Website (Django,Python,SQLite,CSS,Bootstrap,HTML) 
 
 A full-stack blogging platform built using **Django** for backend and **HTML5, CSS3, Bootstrap** for frontend. The project is designed to allow users to register, log in, and create, edit, and manage their blog posts securely.
 ---
